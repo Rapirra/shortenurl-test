@@ -1,0 +1,21 @@
+body {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.mainBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.formBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Title</title>
+ <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+<div class="mainBox">
+ <h1>Test Task</h1>
+
+ <form id="shortenUrlForm">
+  <div class="formBox">
+   <label for="originalUrl">Original URL:</label>
+   <input id="originalUrl" placeholder="Enter original URL" required type="text">
+
+   <label for="alias">Alias:</label>
+   <input id="alias" placeholder="Enter unique alias" type="text">
+  </div>
+  <button type="submit">Generate Short URL</button>
+ </form>
+
+ <div id="result">
+  <p>Short URL:
+   <a id="shortenUrl"></a>
+  </p>
+ </div>
+</div>
+<script defer src="./script.js"></script>
+</body>
+
+</html>
