@@ -4,21 +4,34 @@ services:
   app:
     build:
       context: .
+      dockerfile: Dockerfile
+      target: base
+    container_name: shortenurl_app
+    expose:
+      - '8090'
     ports:
-      - 8090:8090
+      - "8090:8090"
+    command: node dist/index.js
     depends_on:
       - mongo
+    environment:
+      NODE_ENV: production
+      MONGO_URI: "mongodb://mongo:27017/shortenurl-db"
 
   mongo:
     image: mongo:latest
-    container_name: mongo_container
+    container_name: mongo
     ports:
       - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - mongo-data:/data/db
+      - ./data:/data/db
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    ports:
+      - "8083:8081"
 
 volumes:
-  mongo-data:
+  data:
+    driver: local

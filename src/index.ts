@@ -4,6 +4,7 @@ import http from 'http';
 import cors from 'cors';
 import ShortenUrlRoutes from './shortenurl/ShortenurlRoutes';
 
+console.log('88888');
 connectToDatabase()
  .then(() => {
   const app = express();

@@ -1,16 +1,15 @@
-FROM node:18.18.2-alpine
+FROM node:20 as base
 
-ENV NODE_ENV production
+WORKDIR /usr/src/app
 
-WORKDIR /usr/src/index
+COPY package*.json ./
 
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
+RUN npm i
 
-USER node
 COPY . .
-EXPOSE 8090
 
-CMD ["npm", "run", "start"]
+FROM base as production
+
+ENV NODE_PATH=./dist
+
+RUN npm run build
